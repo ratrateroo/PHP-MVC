@@ -1,7 +1,7 @@
 <?php 
 class Application {
     public function __construct() {
-        $this->set_reporting();
+        $this->_set_reporting();
         $this->_unregister_globals();
     }
 
