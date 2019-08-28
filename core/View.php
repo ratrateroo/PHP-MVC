@@ -13,7 +13,7 @@ class View {
 
         if(file_exists(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php')) {
             include(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php');
-            //include(ROOT . DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->_layout . '.php');
+            include(ROOT . DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->_layout . '.php');
         }else {
             die('The new \"'. $viewName . '\" does not exist.');
         }
@@ -30,7 +30,7 @@ class View {
     }
 
     public function start($type) {
-        $this->outputButter = $type;
+        $this->_outputButter = $type;
         ob_start();
     }
 
@@ -38,9 +38,9 @@ class View {
         if($this->_outputBuffer == 'head') {
             $this->_head = ob_get_clean();
         } elseif($this->_outputBuffer == 'body') {
-            $this->_head = ob_get_clean();
+            $this->_body = ob_get_clean();
         } else {
-            die('You must first run the start method.');
+            die('<h1 class="display-1">You must first run the start method.</h1>');
         }
     }
 
